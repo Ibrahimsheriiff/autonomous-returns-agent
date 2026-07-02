@@ -58,7 +58,7 @@ class LLMSettings:
         )
 
 
-# Build the actual Anthropic chat model used by all three LLM paths.
+# the actual Anthropic chat model used by all three LLM paths.
 def build_chat_model(settings: LLMSettings | None = None) -> ChatAnthropic:
     settings = settings or LLMSettings.from_env()
     _require_anthropic_api_key()
@@ -70,7 +70,7 @@ def build_chat_model(settings: LLMSettings | None = None) -> ChatAnthropic:
         "timeout": settings.request_timeout,
     }
 
-    # Some Claude models reject temperature, so only send it when safe.
+    # optional temp 
     if settings.temperature is not None and _supports_temperature(settings.model):
         kwargs["temperature"] = settings.temperature
 

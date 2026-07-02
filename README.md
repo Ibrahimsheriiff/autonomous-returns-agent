@@ -248,3 +248,20 @@ the traces.
 I would keep the same shape, but replace the mock order data with a real order
 API, persist state by ticket ID, add proper customer identity checks, and connect
 human-review cases to the customer care workflow.
+
+## AI Use Disclosure
+
+I used AI tools while working on this project, mainly as a pair-programming and
+thinking partner.
+
+For the architecture side, I used AI to compare different ways of building the
+workflow, think through the agent loop, and pressure-test where the LLM should
+have freedom versus where deterministic Python should take over.
+
+For the coding side, AI helped me move faster with implementation details,
+tests, README wording, and edge cases. I still reviewed the code myself, ran the
+test suite locally, and made the final decisions around the LangGraph structure,
+tool boundaries, policy logic, state handling, and strict JSON validation.
+
+In short, AI helped me iterate faster, but the final design choices, trade-offs,
+and submission are my responsibility.

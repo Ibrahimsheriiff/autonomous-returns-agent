@@ -68,7 +68,7 @@ def get_order_tool(order_id: str) -> dict[str, Any]:
     order = get_order(order_id)
     normalized_order_id = normalize_order_id(order_id)
 
-    # Not found is a normal customer-care case, not a system crash.
+    # Not found is acceptable because irl it can happen so thsystem crash.
     if order is None:
         return {
             "found": False,
