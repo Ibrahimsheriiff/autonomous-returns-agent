@@ -1,0 +1,62 @@
+[project]
+name = "returns-agent"
+version = "0.1.0"
+description = "Autonomous Returns & Resolution Agent prototype for customer care triage."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "langchain-anthropic",
+    "langsmith",
+    "langgraph",
+    "pydantic",
+    "python-dotenv",
+]
+
+[project.scripts]
+returns-agent = "returns_agent.main:main"
+
+[dependency-groups]
+dev = [
+    "black",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+demo = [
+    "streamlit",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.0,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP",
+    "SIM",
+    "RUF",
+]
+ignore = [
+    "E501",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["returns_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q --cov=returns_agent --cov-report=term-missing"
